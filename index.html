@@ -89,12 +89,6 @@
             border-color: var(--brand);
         }
 
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
         .options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -118,7 +112,7 @@
             border-color: var(--brand);
         }
 
-        .option input[type="radio"] {
+        .option input[type="radio"], .option input[type="checkbox"] {
             margin-top: 2px;
             accent-color: var(--brand);
         }
@@ -150,12 +144,6 @@
             accent-color: var(--brand);
         }
 
-        .hint {
-            font-size: .9em;
-            color: var(--light-gray);
-            margin-top: 4px;
-        }
-
         button {
             background: var(--brand);
             border: none;
@@ -166,6 +154,7 @@
             font-weight: bold;
             font-size: 1em;
             transition: all 0.2s ease;
+            width: 100%;
         }
 
         button:hover:not(:disabled) {
@@ -202,24 +191,16 @@
             body {
                 padding: 16px;
             }
-
             form {
                 padding: 20px;
             }
-
-            .row {
-                grid-template-columns: 1fr;
-            }
-
             .options {
                 grid-template-columns: 1fr;
             }
-
             .rating {
                 flex-direction: column;
                 align-items: stretch;
             }
-
             h1 {
                 font-size: 1.8em;
             }
@@ -636,21 +617,17 @@
             const ok = document.getElementById('ok');
             const err = document.getElementById('err');
             
-            // Hide previous notices
             ok.style.display = 'none';
             err.style.display = 'none';
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             
-            // Collect form data
             const formData = new FormData(e.target);
             const payload = {};
             
-            // Handle regular form fields
             formData.forEach((value, key) => {
                 if (payload[key]) {
-                    // Handle multiple values (like checkboxes)
                     if (Array.isArray(payload[key])) {
                         payload[key].push(value);
                     } else {
@@ -661,7 +638,6 @@
                 }
             });
             
-            // Convert arrays to comma-separated strings
             Object.keys(payload).forEach(key => {
                 if (Array.isArray(payload[key])) {
                     payload[key] = payload[key].join(', ');
@@ -671,42 +647,24 @@
             payload.timestamp = new Date().toISOString();
             
             try {
-                const res = await fetch(WEB_APP_URL, {
+                await fetch(WEB_APP_URL, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(payload),
                     mode: 'no-cors'
                 });
                 
-                // Since we're using no-cors, we can't check the actual response
-                // Just assume it worked if no error was thrown
                 ok.style.display = 'block';
                 e.target.reset();
-                
-                // Scroll to top to show success message
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 
             } catch (ex) {
-                console.error('Submission error:', ex);
+                console.error('Error:', ex);
                 err.style.display = 'block';
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Survey';
             }
-        });
-
-        // Form validation feedback
-        document.querySelectorAll('input[required], select[required]').forEach(field => {
-            field.addEventListener('invalid', function() {
-                this.style.borderColor = 'var(--error)';
-            });
-            
-            field.addEventListener('input', function() {
-                if (this.checkValidity()) {
-                    this.style.borderColor = 'var(--border)';
-                }
-            });
         });
     </script>
 </body>
