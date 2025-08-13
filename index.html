@@ -1,100 +1,517 @@
-<!-- Save as index.html and upload to GitHub Pages -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DIY Enabler — Mentorship Survey</title>
-<style>
-  :root{--brand:#009C9C;--ink:#333;--bg:#f8f8f8;--card:#fff;}
-  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:24px}
-  header{max-width:960px;margin:0 auto 16px}
-  h1{color:var(--brand);margin:0 0 8px}
-  p.lede{margin:0;color:#555}
-  form{max-width:960px;margin:16px auto;background:var(--card);padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-  fieldset{border:none;margin:0 0 20px;padding:0}
-  legend{font-weight:bold;color:var(--brand);margin:0 0 8px}
-  label{display:block;margin:10px 0 4px}
-  input[type="text"], input[type="email"], select, textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
-  .option{display:flex;gap:8px;align-items:flex-start}
-  .rating{display:flex;gap:10px;flex-wrap:wrap}
-  .rating .item{display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;border-radius:8px;padding:8px 10px}
-  .hint{font-size:.9em;color:#666}
-  button{background:var(--brand);border:none;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:bold}
-  button:disabled{opacity:.6;cursor:not-allowed}
-  .notice{padding:12px;border-radius:10px;margin-top:10px;display:none}
-  .ok{background:#e7f8f8;color:#0b5;display:none}
-  .err{background:#ffecec;color:#b00;display:none}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY Enabler — Mentorship Survey</title>
+    <style>
+        :root {
+            --brand: #009C9C;
+            --ink: #333;
+            --bg: #f8f8f8;
+            --card: #fff;
+            --border: #e0e0e0;
+            --light-gray: #666;
+            --success: #0b5;
+            --error: #b00;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            margin: 0;
+            padding: 24px;
+        }
+
+        header {
+            max-width: 960px;
+            margin: 0 auto 16px;
+        }
+
+        h1 {
+            color: var(--brand);
+            margin: 0 0 8px;
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+
+        p.lede {
+            margin: 0;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        form {
+            max-width: 960px;
+            margin: 16px auto;
+            background: var(--card);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        }
+
+        fieldset {
+            border: none;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--brand);
+            margin: 0 0 8px;
+            font-size: 1.1em;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 4px;
+            font-weight: 500;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        input:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: none;
+            border-color: var(--brand);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fafafa;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background: #f0f9f9;
+            border-color: var(--brand);
+        }
+
+        .option input[type="radio"] {
+            margin-top: 2px;
+            accent-color: var(--brand);
+        }
+
+        .rating {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .rating .item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            background: #fafafa;
+            transition: all 0.2s ease;
+        }
+
+        .rating .item:hover {
+            background: #f0f9f9;
+            border-color: var(--brand);
+        }
+
+        .rating .item input[type="radio"] {
+            accent-color: var(--brand);
+        }
+
+        .hint {
+            font-size: .9em;
+            color: var(--light-gray);
+            margin-top: 4px;
+        }
+
+        button {
+            background: var(--brand);
+            border: none;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.2s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background: #008080;
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .notice {
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .notice.ok {
+            background: #e7f8e7;
+            color: var(--success);
+        }
+
+        .notice.err {
+            background: #ffecec;
+            color: var(--error);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .rating {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>DIY Enabler — Home Improvement Mentorship Survey</h1>
-  <p class="lede">Help us tailor our DIY mentoring service to your needs. Takes 5–10 mins.</p>
-</header>
+    <header>
+        <h1>DIY Enabler — Home Improvement Mentorship Survey</h1>
+        <p class="lede">Help us tailor our DIY mentoring service to your needs. Takes 5–10 mins.</p>
+    </header>
 
-<form id="survey-form">
-  <!-- Example question -->
-  <fieldset>
-    <legend>Section 1: Demographic Information</legend>
-    <label>1. What is your age group?</label>
-    <select name="age_group" required>
-      <option value="">Select</option>
-      <option>Under 25</option>
-      <option>25-34</option>
-      <option>35-44</option>
-      <option>45-54</option>
-      <option>55 and over</option>
-    </select>
-  </fieldset>
+    <form id="survey-form">
+        <fieldset>
+            <legend>Section 1: Demographic Information</legend>
+            
+            <label>1. What is your age group?</label>
+            <select name="age_group" required>
+                <option value="">Select</option>
+                <option>Under 25</option>
+                <option>25-34</option>
+                <option>35-44</option>
+                <option>45-54</option>
+                <option>55 and over</option>
+            </select>
 
-  <!-- Add all other survey questions here (from previous file) -->
+            <div class="row">
+                <div>
+                    <label>2. Your Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div>
+                    <label>3. Your Email</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
 
-  <button id="submitBtn" type="submit">Submit Survey</button>
-  <div id="ok" class="notice ok">Thanks! Your response has been recorded.</div>
-  <div id="err" class="notice err">Sorry—there was an issue submitting. Please try again.</div>
-</form>
+            <label>4. What is your current living situation?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="living_situation" value="own_home" required>
+                    <span>Own my home</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="living_situation" value="rent_house">
+                    <span>Rent a house</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="living_situation" value="rent_apartment">
+                    <span>Rent an apartment/condo</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="living_situation" value="other">
+                    <span>Other</span>
+                </label>
+            </div>
+        </fieldset>
 
-<script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwv1l6oWVoFNRgKMz4-U0WOfnQNyCO7PTPBISpD2Btz8oWJ5hU2WUWiTgJivuk075Sg/exec";
+        <fieldset>
+            <legend>Section 2: DIY Experience & Interest</legend>
+            
+            <label>5. How would you rate your current DIY skill level?</label>
+            <div class="rating">
+                <label class="item">
+                    <input type="radio" name="skill_level" value="1" required>
+                    <span>1 - Beginner</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="skill_level" value="2">
+                    <span>2</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="skill_level" value="3">
+                    <span>3 - Intermediate</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="skill_level" value="4">
+                    <span>4</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="skill_level" value="5">
+                    <span>5 - Advanced</span>
+                </label>
+            </div>
 
-document.getElementById('survey-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const submitBtn = document.getElementById('submitBtn');
-  const ok = document.getElementById('ok');
-  const err = document.getElementById('err');
-  ok.style.display = 'none';
-  err.style.display = 'none';
-  submitBtn.disabled = true;
+            <label>6. What types of DIY projects interest you most? (Select all that apply)</label>
+            <div class="options">
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="painting">
+                    <span>Painting & decorating</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="plumbing">
+                    <span>Basic plumbing</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="electrical">
+                    <span>Electrical work</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="carpentry">
+                    <span>Carpentry & woodworking</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="flooring">
+                    <span>Flooring installation</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="project_interests" value="outdoor">
+                    <span>Outdoor/landscaping projects</span>
+                </label>
+            </div>
 
-  const formData = new FormData(e.target);
-  const payload = {};
-  formData.forEach((value, key) => payload[key] = value);
-  payload.timestamp = new Date().toISOString();
+            <label>7. What's your biggest challenge with DIY projects?</label>
+            <textarea name="biggest_challenge" rows="3" placeholder="Describe your main obstacle or concern..."></textarea>
+        </fieldset>
 
-  try {
-    const res = await fetch(WEB_APP_URL, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    if (res.ok && data.status === 'ok') {
-      ok.style.display = 'block';
-      e.target.reset();
-    } else {
-      throw new Error(data.message || 'Submit error');
-    }
-  } catch (ex) {
-    console.error(ex);
-    err.style.display = 'block';
-  } finally {
-    submitBtn.disabled = false;
-  }
-});
-</script>
+        <fieldset>
+            <legend>Section 3: Mentorship Preferences</legend>
+            
+            <label>8. How would you prefer to receive DIY guidance?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="guidance_preference" value="in_person" required>
+                    <span>In-person, hands-on mentoring</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="guidance_preference" value="video_calls">
+                    <span>Video calls/virtual sessions</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="guidance_preference" value="phone_support">
+                    <span>Phone support/consultation</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="guidance_preference" value="written_guides">
+                    <span>Written guides & instructions</span>
+                </label>
+            </div>
+
+            <label>9. How much would you be willing to pay for personalized DIY mentoring? (per hour)</label>
+            <select name="price_willing" required>
+                <option value="">Select</option>
+                <option>$25-35</option>
+                <option>$35-50</option>
+                <option>$50-75</option>
+                <option>$75-100</option>
+                <option>$100+</option>
+            </select>
+
+            <label>10. What time of day works best for you?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="preferred_time" value="morning" required>
+                    <span>Morning (8am-12pm)</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="preferred_time" value="afternoon">
+                    <span>Afternoon (12pm-5pm)</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="preferred_time" value="evening">
+                    <span>Evening (5pm-8pm)</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="preferred_time" value="weekend">
+                    <span>Weekends</span>
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Section 4: Additional Feedback</legend>
+            
+            <label>11. What would make you most likely to choose a DIY mentoring service?</label>
+            <div class="rating">
+                <label class="item">
+                    <input type="radio" name="deciding_factor" value="expertise" required>
+                    <span>Proven expertise</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="deciding_factor" value="patience">
+                    <span>Patient teaching style</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="deciding_factor" value="price">
+                    <span>Affordable pricing</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="deciding_factor" value="flexibility">
+                    <span>Flexible scheduling</span>
+                </label>
+                <label class="item">
+                    <input type="radio" name="deciding_factor" value="local">
+                    <span>Local availability</span>
+                </label>
+            </div>
+
+            <label>12. Any additional comments or suggestions?</label>
+            <textarea name="additional_comments" rows="4" placeholder="Share any other thoughts about DIY mentoring services..."></textarea>
+            <div class="hint">Optional - but your insights help us improve our service!</div>
+        </fieldset>
+
+        <button id="submitBtn" type="submit">Submit Survey</button>
+        
+        <div id="ok" class="notice ok">Thanks! Your response has been recorded.</div>
+        <div id="err" class="notice err">Sorry—there was an issue submitting. Please try again.</div>
+    </form>
+
+    <script>
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbztAa-HuazZIsveYJTYGmeNlKorcNvYYt2ir63FoXPyM4MWlSaIpmLsVT_orjtk8lKhBA/exec";
+
+        document.getElementById('survey-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const ok = document.getElementById('ok');
+            const err = document.getElementById('err');
+            
+            // Hide previous notices
+            ok.style.display = 'none';
+            err.style.display = 'none';
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Collect form data
+            const formData = new FormData(e.target);
+            const payload = {};
+            
+            // Handle regular form fields
+            formData.forEach((value, key) => {
+                if (payload[key]) {
+                    // Handle multiple values (like checkboxes)
+                    if (Array.isArray(payload[key])) {
+                        payload[key].push(value);
+                    } else {
+                        payload[key] = [payload[key], value];
+                    }
+                } else {
+                    payload[key] = value;
+                }
+            });
+            
+            // Convert arrays to comma-separated strings
+            Object.keys(payload).forEach(key => {
+                if (Array.isArray(payload[key])) {
+                    payload[key] = payload[key].join(', ');
+                }
+            });
+            
+            payload.timestamp = new Date().toISOString();
+            payload.survey_type = 'DIY_Mentorship_Survey';
+            
+            try {
+                const res = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload),
+                    mode: 'no-cors'
+                });
+                
+                // Since we're using no-cors, we can't check the actual response
+                // Just assume it worked if no error was thrown
+                ok.style.display = 'block';
+                e.target.reset();
+                
+                // Scroll to top to show success message
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+            } catch (ex) {
+                console.error('Submission error:', ex);
+                err.style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Survey';
+            }
+        });
+
+        // Form validation feedback
+        document.querySelectorAll('input[required], select[required]').forEach(field => {
+            field.addEventListener('invalid', function() {
+                this.style.borderColor = 'var(--error)';
+            });
+            
+            field.addEventListener('input', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = 'var(--border)';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
