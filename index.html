@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Enabler — Mentorship Survey</title>
+    <title>Home Improvement Mentorship Program Survey</title>
     <style>
         :root {
             --brand: #009C9C;
@@ -228,8 +228,8 @@
 </head>
 <body>
     <header>
-        <h1>DIY Enabler — Home Improvement Mentorship Survey</h1>
-        <p class="lede">Help us tailor our DIY mentoring service to your needs. Takes 5–10 mins.</p>
+        <h1>Home Improvement Mentorship Program Survey</h1>
+        <p class="lede">We are developing a mentorship program aimed at assisting recent home buyers with home improvements and renovations. Your feedback will help us tailor our services to better meet your needs. This survey should take approximately 5-10 minutes to complete.</p>
     </header>
 
     <form id="survey-form">
@@ -237,195 +237,392 @@
             <legend>Section 1: Demographic Information</legend>
             
             <label>1. What is your age group?</label>
-            <select name="age_group" required>
-                <option value="">Select</option>
-                <option>Under 25</option>
-                <option>25-34</option>
-                <option>35-44</option>
-                <option>45-54</option>
-                <option>55 and over</option>
-            </select>
-
-            <div class="row">
-                <div>
-                    <label>2. Your Name</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div>
-                    <label>3. Your Email</label>
-                    <input type="email" name="email" required>
-                </div>
-            </div>
-
-            <label>4. What is your current living situation?</label>
             <div class="options">
                 <label class="option">
-                    <input type="radio" name="living_situation" value="own_home" required>
-                    <span>Own my home</span>
+                    <input type="radio" name="age_group" value="under_25" required>
+                    <span>Under 25</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="living_situation" value="rent_house">
-                    <span>Rent a house</span>
+                    <input type="radio" name="age_group" value="25_34">
+                    <span>25-34</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="living_situation" value="rent_apartment">
-                    <span>Rent an apartment/condo</span>
+                    <input type="radio" name="age_group" value="35_44">
+                    <span>35-44</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="age_group" value="45_54">
+                    <span>45-54</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="age_group" value="55_over">
+                    <span>55 and over</span>
+                </label>
+            </div>
+
+            <label>2. What is your current living situation?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="living_situation" value="first_time_buyer" required>
+                    <span>First-time home buyer</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="living_situation" value="recent_buyer">
+                    <span>Recently purchased a home (within the last 2 years)</span>
                 </label>
                 <label class="option">
                     <input type="radio" name="living_situation" value="other">
                     <span>Other</span>
                 </label>
             </div>
+            <input type="text" name="living_situation_other" placeholder="If other, please specify..." style="margin-top: 8px;">
+
+            <label>3. What type of home do you own?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="home_type" value="single_family" required>
+                    <span>Single-family home</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="home_type" value="townhouse">
+                    <span>Townhouse</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="home_type" value="unit">
+                    <span>Unit</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="home_type" value="other">
+                    <span>Other</span>
+                </label>
+            </div>
+            <input type="text" name="home_type_other" placeholder="If other, please specify..." style="margin-top: 8px;">
         </fieldset>
 
         <fieldset>
-            <legend>Section 2: DIY Experience & Interest</legend>
+            <legend>Section 2: Home Improvement Experience</legend>
             
-            <label>5. How would you rate your current DIY skill level?</label>
-            <div class="rating">
-                <label class="item">
-                    <input type="radio" name="skill_level" value="1" required>
-                    <span>1 - Beginner</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="skill_level" value="2">
-                    <span>2</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="skill_level" value="3">
-                    <span>3 - Intermediate</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="skill_level" value="4">
-                    <span>4</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="skill_level" value="5">
-                    <span>5 - Advanced</span>
-                </label>
-            </div>
-
-            <label>6. What types of DIY projects interest you most? (Select all that apply)</label>
+            <label>4. How would you rate your current knowledge of home improvement and renovation projects?</label>
             <div class="options">
                 <label class="option">
-                    <input type="checkbox" name="project_interests" value="painting">
-                    <span>Painting & decorating</span>
+                    <input type="radio" name="knowledge_level" value="no_knowledge" required>
+                    <span>No knowledge</span>
                 </label>
                 <label class="option">
-                    <input type="checkbox" name="project_interests" value="plumbing">
-                    <span>Basic plumbing</span>
+                    <input type="radio" name="knowledge_level" value="basic">
+                    <span>Basic knowledge</span>
                 </label>
                 <label class="option">
-                    <input type="checkbox" name="project_interests" value="electrical">
-                    <span>Electrical work</span>
+                    <input type="radio" name="knowledge_level" value="moderate">
+                    <span>Moderate knowledge</span>
                 </label>
                 <label class="option">
-                    <input type="checkbox" name="project_interests" value="carpentry">
-                    <span>Carpentry & woodworking</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="project_interests" value="flooring">
-                    <span>Flooring installation</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="project_interests" value="outdoor">
-                    <span>Outdoor/landscaping projects</span>
+                    <input type="radio" name="knowledge_level" value="advanced">
+                    <span>Advanced knowledge</span>
                 </label>
             </div>
 
-            <label>7. What's your biggest challenge with DIY projects?</label>
-            <textarea name="biggest_challenge" rows="3" placeholder="Describe your main obstacle or concern..."></textarea>
+            <label>5. Have you undertaken any home improvement projects in the past?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="past_projects" value="yes" required>
+                    <span>Yes</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="past_projects" value="no">
+                    <span>No</span>
+                </label>
+            </div>
+
+            <label>6. If yes, please describe the type of projects you have completed:</label>
+            <textarea name="past_projects_description" rows="3" placeholder="Describe the projects you have completed..."></textarea>
         </fieldset>
 
         <fieldset>
-            <legend>Section 3: Mentorship Preferences</legend>
+            <legend>Section 3: Interest in Mentorship Services</legend>
             
-            <label>8. How would you prefer to receive DIY guidance?</label>
+            <label>7. Which of the following services would you find most valuable? (Select all that apply)</label>
             <div class="options">
                 <label class="option">
-                    <input type="radio" name="guidance_preference" value="in_person" required>
-                    <span>In-person, hands-on mentoring</span>
+                    <input type="checkbox" name="valuable_services" value="equipment_training">
+                    <span>On-the-job training for using building equipment</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="guidance_preference" value="video_calls">
-                    <span>Video calls/virtual sessions</span>
+                    <input type="checkbox" name="valuable_services" value="building_advice">
+                    <span>Planning and building advice</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="guidance_preference" value="phone_support">
-                    <span>Phone support/consultation</span>
+                    <input type="checkbox" name="valuable_services" value="project_planning">
+                    <span>Project planning assistance</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="guidance_preference" value="written_guides">
-                    <span>Written guides & instructions</span>
+                    <input type="checkbox" name="valuable_services" value="startup_inspection">
+                    <span>Startup inspection and advice</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="valuable_services" value="diy_mentor_help">
+                    <span>Help from a DIY mentor with tools when needed</span>
+                </label>
+                <label class="option">
+                    <input type="checkbox" name="valuable_services" value="other">
+                    <span>Other</span>
+                </label>
+            </div>
+            <input type="text" name="valuable_services_other" placeholder="If other, please specify..." style="margin-top: 8px;">
+
+            <label>8. How important are the following factors when considering getting assistance from a DIY mentor? (Rate from 1 to 5, where 1 = Not important and 5 = Very important)</label>
+            
+            <div style="margin-top: 12px;">
+                <label style="margin-bottom: 8px; display: block;">Cost of services:</label>
+                <div class="rating">
+                    <label class="item">
+                        <input type="radio" name="importance_cost" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_cost" value="2">
+                        <span>2</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_cost" value="3">
+                        <span>3</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_cost" value="4">
+                        <span>4</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_cost" value="5">
+                        <span>5</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <label style="margin-bottom: 8px; display: block;">Overall project management and assistance:</label>
+                <div class="rating">
+                    <label class="item">
+                        <input type="radio" name="importance_management" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_management" value="2">
+                        <span>2</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_management" value="3">
+                        <span>3</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_management" value="4">
+                        <span>4</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_management" value="5">
+                        <span>5</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <label style="margin-bottom: 8px; display: block;">Flexibility of scheduling:</label>
+                <div class="rating">
+                    <label class="item">
+                        <input type="radio" name="importance_flexibility" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_flexibility" value="2">
+                        <span>2</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_flexibility" value="3">
+                        <span>3</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_flexibility" value="4">
+                        <span>4</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_flexibility" value="5">
+                        <span>5</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <label style="margin-bottom: 8px; display: block;">Resources and advice to assist work and planning:</label>
+                <div class="rating">
+                    <label class="item">
+                        <input type="radio" name="importance_resources" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_resources" value="2">
+                        <span>2</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_resources" value="3">
+                        <span>3</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_resources" value="4">
+                        <span>4</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_resources" value="5">
+                        <span>5</span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 12px;">
+                <label style="margin-bottom: 8px; display: block;">Gaining hands-on experience:</label>
+                <div class="rating">
+                    <label class="item">
+                        <input type="radio" name="importance_experience" value="1" required>
+                        <span>1</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_experience" value="2">
+                        <span>2</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_experience" value="3">
+                        <span>3</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_experience" value="4">
+                        <span>4</span>
+                    </label>
+                    <label class="item">
+                        <input type="radio" name="importance_experience" value="5">
+                        <span>5</span>
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Section 4: Pricing and Payment</legend>
+            
+            <label>9. What would be your budget for on-the-job training programs?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="training_budget" value="0_50" required>
+                    <span>$0 - $50</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="training_budget" value="51_100">
+                    <span>$51 - $100</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="training_budget" value="101_200">
+                    <span>$101 - $200</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="training_budget" value="201_500">
+                    <span>$201 - $500</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="training_budget" value="500_plus">
+                    <span>More than $500</span>
                 </label>
             </div>
 
-            <label>9. How much would you be willing to pay for personalized DIY mentoring? (per hour)</label>
-            <select name="price_willing" required>
-                <option value="">Select</option>
-                <option>$25-35</option>
-                <option>$35-50</option>
-                <option>$50-75</option>
-                <option>$75-100</option>
-                <option>$100+</option>
-            </select>
-
-            <label>10. What time of day works best for you?</label>
+            <label>10. Would you prefer to pay for mentorship services:</label>
             <div class="options">
                 <label class="option">
-                    <input type="radio" name="preferred_time" value="morning" required>
-                    <span>Morning (8am-12pm)</span>
+                    <input type="radio" name="payment_preference" value="per_session" required>
+                    <span>Per session</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="preferred_time" value="afternoon">
-                    <span>Afternoon (12pm-5pm)</span>
+                    <input type="radio" name="payment_preference" value="package_deal">
+                    <span>As a package deal (multiple sessions)</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="preferred_time" value="evening">
-                    <span>Evening (5pm-8pm)</span>
+                    <input type="radio" name="payment_preference" value="flat_fee">
+                    <span>A flat fee for an entire project</span>
+                </label>
+            </div>
+
+            <label>11. How much would you be willing to pay for a single mentoring session (1-2 hours)?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="single_session_price" value="0_100" required>
+                    <span>$0 - $100</span>
                 </label>
                 <label class="option">
-                    <input type="radio" name="preferred_time" value="weekend">
-                    <span>Weekends</span>
+                    <input type="radio" name="single_session_price" value="100_200">
+                    <span>$100 - $200</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="single_session_price" value="200_300">
+                    <span>$200 - $300</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="single_session_price" value="300_plus">
+                    <span>More than $300</span>
+                </label>
+            </div>
+
+            <label>12. How much would you be willing to pay for ongoing mentoring session on a half day basis?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="half_day_price" value="0_100" required>
+                    <span>$0 - $100</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="half_day_price" value="100_200">
+                    <span>$100 - $200</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="half_day_price" value="200_300">
+                    <span>$200 - $300</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="half_day_price" value="300_plus">
+                    <span>More than $300</span>
+                </label>
+            </div>
+
+            <label>13. How much would you be willing to pay for ongoing mentoring session on a full day basis?</label>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="full_day_price" value="0_300" required>
+                    <span>$0 - $300</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="full_day_price" value="300_400">
+                    <span>$300 - $400</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="full_day_price" value="400_500">
+                    <span>$400 - $500</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="full_day_price" value="500_plus">
+                    <span>More than $500</span>
                 </label>
             </div>
         </fieldset>
 
         <fieldset>
-            <legend>Section 4: Additional Feedback</legend>
+            <legend>Section 5: Additional Feedback</legend>
             
-            <label>11. What would make you most likely to choose a DIY mentoring service?</label>
-            <div class="rating">
-                <label class="item">
-                    <input type="radio" name="deciding_factor" value="expertise" required>
-                    <span>Proven expertise</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="deciding_factor" value="patience">
-                    <span>Patient teaching style</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="deciding_factor" value="price">
-                    <span>Affordable pricing</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="deciding_factor" value="flexibility">
-                    <span>Flexible scheduling</span>
-                </label>
-                <label class="item">
-                    <input type="radio" name="deciding_factor" value="local">
-                    <span>Local availability</span>
-                </label>
-            </div>
+            <label>14. What specific skills or topics would you like to learn more about?</label>
+            <textarea name="skills_interest" rows="3" placeholder="Describe the skills or topics you're most interested in learning..."></textarea>
 
-            <label>12. Any additional comments or suggestions?</label>
-            <textarea name="additional_comments" rows="4" placeholder="Share any other thoughts about DIY mentoring services..."></textarea>
-            <div class="hint">Optional - but your insights help us improve our service!</div>
+            <label>15. Do you have any other comments or suggestions regarding possible services you would use a DIY mentor for and what you would be willing to pay for that might help this business develop?</label>
+            <textarea name="additional_feedback" rows="4" placeholder="Share your thoughts on services and pricing that would be valuable to you..."></textarea>
+
+            <label>If you would like to stay informed about our program launch, please provide your email address (optional):</label>
+            <input type="email" name="contact_email" placeholder="your.email@example.com">
         </fieldset>
 
         <button id="submitBtn" type="submit">Submit Survey</button>
         
-        <div id="ok" class="notice ok">Thanks! Your response has been recorded.</div>
+        <div id="ok" class="notice ok">Thank you for your time and insights! Your feedback is invaluable in helping us create a mentorship program that meets the needs of current and potential home buyers like you.</div>
         <div id="err" class="notice err">Sorry—there was an issue submitting. Please try again.</div>
     </form>
 
