@@ -627,7 +627,7 @@
     </form>
 
     <script>
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbztAa-HuazZIsveYJTYGmeNlKorcNvYYt2ir63FoXPyM4MWlSaIpmLsVT_orjtk8lKhBA/exec";
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxU2aMSsuuNCARrG7mjIlgw-bfmP6GrAoMMWFfqTS109luGzPgIeW8w5DtsHbNHJyI/exec";
 
         document.getElementById('survey-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -669,7 +669,6 @@
             });
             
             payload.timestamp = new Date().toISOString();
-            payload.survey_type = 'DIY_Mentorship_Survey';
             
             try {
                 const res = await fetch(WEB_APP_URL, {
