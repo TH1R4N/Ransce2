@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIY Enabler — Mentorship Survey</title>
+  <style>
+    :root{--brand:#009C9C;--ink:#333;--bg:#f8f8f8;--card:#fff;}
+    *{box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:24px}
+    header{max-width:960px;margin:0 auto 16px}
+    h1{color:var(--brand);margin:0 0 8px}
+    p.lede{margin:0;color:#555}
+    form{max-width:960px;margin:16px auto;background:var(--card);padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    fieldset{border:none;margin:0 0 20px;padding:0}
+    legend{font-weight:bold;color:var(--brand);margin:0 0 8px}
+    label{display:block;margin:10px 0 4px}
+    input[type="text"], input[type="email"], select, textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+    .option{display:flex;gap:8px;align-items:flex-start}
+    .rating{display:flex;gap:10px;flex-wrap:wrap}
+    .rating .item{display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;border-radius:8px;padding:8px 10px}
+    .hint{font-size:.9em;color:#666}
+    button{background:var(--brand);border:none;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:bold}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    .notice{padding:12px;border-radius:10px;margin-top:10px;display:none}
+    .ok{background:#e7f8f8;color:#0b5;display:none}
+    .err{background:#ffecec;color:#b00;display:none}
+    footer{max-width:960px;margin:20px auto;color:#666;font-size:.88em}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DIY Enabler — Home Improvement Mentorship Survey</h1>
+    <p class="lede">Thanks for helping us tailor our DIY mentoring service. This takes about 5–10 minutes.</p>
+  </header>
+
+  <form id="survey-form">
+    <!-- Section 1 -->
+    <fieldset>
+      <legend>Section 1: Demographic Information</legend>
+      <label for="age_group">1. What is your age group?</label>
+      <select id="age_group" name="age_group" required>
+        <option value="">Select</option>
+        <option>Under 25</option>
+        <option>25-34</option>
+        <option>35-44</option>
+        <option>45-54</option>
+        <option>55 and over</option>
+      </select>
+
+      <div class="row">
+        <div>
+          <label for="living_situation">2. Current living situation</label>
+          <select id="living_situation" name="living_situation" required>
+            <option value="">Select</option>
+            <option>First-time home buyer</option>
+            <option>Recently purchased a home (within the last 2 years)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="home_type">3. Type of home</label>
+          <select id="home_type" name="home_type" required>
+            <option value="">Select</option>
+            <option>Single-family home</option>
+            <option>Townhouse</option>
+            <option>Unit</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Section 2 -->
+    <fieldset>
+      <legend>Section 2: Home Improvement Experience</legend>
+      <label for="knowledge_level">4. Knowledge level</label>
+      <select id="knowledge_level" name="knowledge_level" required>
+        <option>No knowledge</option>
+        <option>Basic knowledge</option>
+        <option>Moderate knowledge</option>
+        <option>Advanced knowledge</option>
+      </select>
+
+      <label for="past_projects">5. Have you undertaken any projects?</label>
+      <select id="past_projects" name="past_projects" required>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label for="project_description">6. If yes, please describe:</label>
+      <textarea id="project_description" name="project_description" rows="3" placeholder="e.g., painted rooms, tiling, deck repairs"></textarea>
+    </fieldset>
+
+    <!-- Section 3 -->
+    <fieldset>
+      <legend>Section 3: Interest in Mentorship Services</legend>
+      <label>7. Which services would you find most valuable? (Select all that apply)</label>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="services" value="On-the-job training for using building equipment"> On-the-job training for using building equipment</label>
+        <label class="option"><input type="checkbox" name="services" value="Planning and building advice"> Planning and building advice</label>
+        <label class="option"><input type="checkbox" name="services" value="Project planning assistance"> Project planning assistance</label>
+        <label class="option"><input type="checkbox" name="services" value="Startup inspection and advice"> Startup inspection and advice</label>
+        <label class="option"><input type="checkbox" name="services" value="Help from a DIY mentor with tools when needed"> Help from a DIY mentor with tools when needed</label>
+        <label class="option"><input type="checkbox" name="services" value="Other"> Other</label>
+      </div>
+
+      <label>8. How important are the following? (1 = Not important, 5 = Very important)</label>
+      <div class="rating">
+        <div class="item">Cost of services:
+          <select name="importance_cost">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+          </select>
+        </div>
+        <div class="item">Overall project management and assistance:
+          <select name="importance_pm">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+          </select>
+        </div>
+        <div class="item">Flexibility of scheduling:
+          <select name="importance_flex">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+          </select>
+        </div>
+        <div class="item">Resources & advice to assist planning:
+          <select name="importance_resources">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+          </select>
+        </div>
+        <div class="item">Gaining hands-on experience:
+          <select name="importance_hands_on">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Section 4 -->
+    <fieldset>
+      <legend>Section 4: Pricing & Payment</legend>
+      <div class="row-3">
+        <div>
+          <label for="budget_training">9. Budget for on-the-job training</label>
+          <select id="budget_training" name="budget_training">
+            <option>$0 - $50</option>
+            <option>$51 - $100</option>
+            <option>$101 - $200</option>
+            <option>$201 - $500</option>
+            <option>More than $500</option>
+          </select>
+        </div>
+        <div>
+          <label for="payment_method">10. Preferred payment method</label>
+          <select id="payment_method" name="payment_method">
+            <option>Per session</option>
+            <option>Package deal (multiple sessions)</option>
+            <option>Flat fee for entire project</option>
+          </select>
+        </div>
+        <div>
+          <label for="pay_single_session">11. Single mentoring session (1–2 hrs)</label>
+          <select id="pay_single_session" name="pay_single_session">
+            <option>$0 - $100</option>
+            <option>$100 - $200</option>
+            <option>$200 - $300</option>
+            <option>More than $300</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="pay_half_day">12. Ongoing mentoring (half day)</label>
+          <select id="pay_half_day" name="pay_half_day">
+            <option>$0 - $100</option>
+            <option>$100 - $200</option>
+            <option>$200 - $300</option>
+            <option>More than $300</option>
+          </select>
+        </div>
+        <div>
+          <label for="pay_full_day">13. Ongoing mentoring (full day)</label>
+          <select id="pay_full_day" name="pay_full_day">
+            <option>$0 - $300</option>
+            <option>$300 - $400</option>
+            <option>$400 - $500</option>
+            <option>More than $500</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Section 5 -->
+    <fieldset>
+      <legend>Section 5: Additional Feedback</legend>
+      <label for="skills_topics">14. Specific skills/topics to learn</label>
+      <textarea id="skills_topics" name="skills_topics" rows="3"></textarea>
+
+      <label for="other_comments">15. Other comments or suggestions</label>
+      <textarea id="other_comments" name="other_comments" rows="3"></textarea>
+
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" />
+      <p class="hint">By submitting, you consent to us storing your responses.</p>
+    </fieldset>
+
+    <button id="submitBtn" type="submit">Submit Survey</button>
+    <div id="ok" class="notice ok">Thanks! Your response has been recorded.</div>
+    <div id="err" class="notice err">Sorry—there was an issue submitting. Please try again.</div>
+  </form>
+
+  <footer>
+    <p>© DIY Enabler</p>
+  </footer>
+
+<script>
+// Replace with your Apps Script Web App URL after you deploy it
+const WEB_APP_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEB_APP_URL";
+
+function getCheckedValues(name){
+  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+}
+
+document.getElementById('survey-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const submitBtn = document.getElementById('submitBtn');
+  const ok = document.getElementById('ok');
+  const err = document.getElementById('err');
+  ok.style.display = 'none'; err.style.display = 'none';
+  submitBtn.disabled = true;
+
+  const payload = {
+    age_group: document.getElementById('age_group').value,
+    living_situation: document.getElementById('living_situation').value,
+    home_type: document.getElementById('home_type').value,
+    knowledge_level: document.getElementById('knowledge_level').value,
+    past_projects: document.getElementById('past_projects').value,
+    project_description: document.getElementById('project_description').value,
+    services: getCheckedValues('services').join(', '),
+    importance_cost: document.querySelector('[name="importance_cost"]').value,
+    importance_pm: document.querySelector('[name="importance_pm"]').value,
+    importance_flex: document.querySelector('[name="importance_flex"]').value,
+    importance_resources: document.querySelector('[name="importance_resources"]').value,
+    importance_hands_on: document.querySelector('[name="importance_hands_on"]').value,
+    budget_training: document.getElementById('budget_training').value,
+    payment_method: document.getElementById('payment_method').value,
+    pay_single_session: document.getElementById('pay_single_session').value,
+    pay_half_day: document.getElementById('pay_half_day').value,
+    pay_full_day: document.getElementById('pay_full_day').value,
+    skills_topics: document.getElementById('skills_topics').value,
+    other_comments: document.getElementById('other_comments').value,
+    email: document.getElementById('email').value,
+    timestamp: new Date().toISOString()
+  };
+
+  try{
+    const res = await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if(res.ok && data.status === 'ok'){
+      ok.style.display = 'block';
+      e.target.reset();
+    }else{
+      throw new Error(data.message || 'Submit error');
+    }
+  }catch(ex){
+    console.error(ex);
+    err.style.display = 'block';
+  }finally{
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
