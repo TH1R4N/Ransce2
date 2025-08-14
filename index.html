@@ -212,7 +212,7 @@
   </form>
 
   <footer>
-    <p>Ransce© DIY Enabler</p>
+    <p>Â© DIY Enabler</p>
   </footer>
 
 <script>
@@ -256,22 +256,32 @@ document.getElementById('survey-form').addEventListener('submit', async (e) => {
   };
 
   try{
+    console.log('Submitting to:', WEB_APP_URL);
+    console.log('Payload:', payload);
+    
     const res = await fetch(WEB_APP_URL, {
       method: 'POST',
       mode: 'cors',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(payload)
     });
+    
+    console.log('Response status:', res.status);
+    console.log('Response headers:', res.headers);
+    
     const data = await res.json();
+    console.log('Response data:', data);
+    
     if(res.ok && data.status === 'ok'){
       ok.style.display = 'block';
       e.target.reset();
     }else{
-      throw new Error(data.message || 'Submit error');
+      throw new Error(data.message || `Submit error: ${res.status}`);
     }
   }catch(ex){
-    console.error(ex);
+    console.error('Full error details:', ex);
     err.style.display = 'block';
+    err.textContent = `Error: ${ex.message}`;
   }finally{
     submitBtn.disabled = false;
   }
