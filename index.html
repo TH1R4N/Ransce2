@@ -212,7 +212,7 @@
   </form>
 
   <footer>
-    <p>Ransce Salan © DIY Enabler</p>
+    <p>Â© DIY Enabler</p>
   </footer>
 
 <script>
@@ -259,15 +259,18 @@ document.getElementById('survey-form').addEventListener('submit', async (e) => {
     console.log('Submitting to:', WEB_APP_URL);
     console.log('Payload:', payload);
     
+    // Convert payload to FormData to avoid CORS preflight
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(payload)) {
+      formData.append(key, value);
+    }
+    
     const res = await fetch(WEB_APP_URL, {
       method: 'POST',
-      mode: 'cors',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
+      body: formData
     });
     
     console.log('Response status:', res.status);
-    console.log('Response headers:', res.headers);
     
     const data = await res.json();
     console.log('Response data:', data);
