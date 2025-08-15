@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DIY Enabler â€" Mentorship Survey</title>
+  <title>DIY Enabler &mdash; Mentorship Survey</title>
   <style>
     :root{--brand:#009C9C;--ink:#333;--bg:#f8f8f8;--card:#fff;}
     *{box-sizing:border-box}
@@ -26,15 +26,15 @@
     button{background:var(--brand);border:none;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:bold}
     button:disabled{opacity:.6;cursor:not-allowed}
     .notice{padding:12px;border-radius:10px;margin-top:10px;display:none}
-    .ok{background:#e7f8f8;color:#0b5;display:none}
-    .err{background:#ffecec;color:#b00;display:none}
+    .ok{background:#e7f8f8;color:#0b5}
+    .err{background:#ffecec;color:#b00}
     footer{max-width:960px;margin:20px auto;color:#666;font-size:.88em}
   </style>
 </head>
 <body>
   <header>
-    <h1>DIY Enabler â€" Home Improvement Mentorship Survey</h1>
-    <p class="lede">Thanks for helping us tailor our DIY mentoring service. This takes about 5â€"10 minutes.</p>
+    <h1>DIY Enabler &mdash; Home Improvement Mentorship Survey</h1>
+    <p class="lede">Thanks for helping us tailor our DIY mentoring service. This takes about 5&ndash;10 minutes.</p>
   </header>
 
   <form id="survey-form">
@@ -79,6 +79,7 @@
       <legend>Section 2: Home Improvement Experience</legend>
       <label for="knowledge_level">4. Knowledge level</label>
       <select id="knowledge_level" name="knowledge_level" required>
+        <option value="">Select</option>
         <option>No knowledge</option>
         <option>Basic knowledge</option>
         <option>Moderate knowledge</option>
@@ -87,6 +88,7 @@
 
       <label for="past_projects">5. Have you undertaken any projects?</label>
       <select id="past_projects" name="past_projects" required>
+        <option value="">Select</option>
         <option>Yes</option>
         <option>No</option>
       </select>
@@ -125,7 +127,7 @@
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
-        <div class="item">Resources & advice to assist planning:
+        <div class="item">Resources &amp; advice to assist planning:
           <select name="importance_resources">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
@@ -140,11 +142,12 @@
 
     <!-- Section 4 -->
     <fieldset>
-      <legend>Section 4: Pricing & Payment</legend>
+      <legend>Section 4: Pricing &amp; Payment</legend>
       <div class="row-3">
         <div>
           <label for="budget_training">9. Budget for on-the-job training</label>
           <select id="budget_training" name="budget_training">
+            <option value="">Select</option>
             <option>$0 - $50</option>
             <option>$51 - $100</option>
             <option>$101 - $200</option>
@@ -155,14 +158,16 @@
         <div>
           <label for="payment_method">10. Preferred payment method</label>
           <select id="payment_method" name="payment_method">
+            <option value="">Select</option>
             <option>Per session</option>
             <option>Package deal (multiple sessions)</option>
             <option>Flat fee for entire project</option>
           </select>
         </div>
         <div>
-          <label for="pay_single_session">11. Single mentoring session (1â€"2 hrs)</label>
+          <label for="pay_single_session">11. Single mentoring session (1&ndash;2 hrs)</label>
           <select id="pay_single_session" name="pay_single_session">
+            <option value="">Select</option>
             <option>$0 - $100</option>
             <option>$100 - $200</option>
             <option>$200 - $300</option>
@@ -174,6 +179,7 @@
         <div>
           <label for="pay_half_day">12. Ongoing mentoring (half day)</label>
           <select id="pay_half_day" name="pay_half_day">
+            <option value="">Select</option>
             <option>$0 - $100</option>
             <option>$100 - $200</option>
             <option>$200 - $300</option>
@@ -183,6 +189,7 @@
         <div>
           <label for="pay_full_day">13. Ongoing mentoring (full day)</label>
           <select id="pay_full_day" name="pay_full_day">
+            <option value="">Select</option>
             <option>$0 - $300</option>
             <option>$300 - $400</option>
             <option>$400 - $500</option>
@@ -208,16 +215,15 @@
 
     <button id="submitBtn" type="submit">Submit Survey</button>
     <div id="ok" class="notice ok">Thanks! Your response has been recorded.</div>
-    <div id="err" class="notice err">Sorryâ€"there was an issue submitting. Please try again.</div>
+    <div id="err" class="notice err">Sorry — there was an issue submitting. Please try again.</div>
   </form>
 
   <footer>
-    <p>Â© DIY Enabler</p>
+    <p>&copy; Rabsce @ DIY Enabler</p>
   </footer>
 
 <script>
-// Replace with your Apps Script Web App URL after you deploy it
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxxQWDm5xoeCSDmQRyKnbr8rUXvhO6Vpg5Afgj8E0sPKNiBF_S-O_NcZYGRekF2rjk/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwCa0-qqaVIE110ATW6-KHO1iBe7nTAgd17g6wY48N7Quq9H50l7MtxQoGK7n5iJGhE/exec";
 
 function getCheckedValues(name){
   return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
@@ -256,36 +262,24 @@ document.getElementById('survey-form').addEventListener('submit', async (e) => {
   };
 
   try{
-    console.log('Submitting to:', WEB_APP_URL);
-    console.log('Payload:', payload);
-    
     // Convert payload to FormData to avoid CORS preflight
     const formData = new FormData();
-    for (const [key, value] of Object.entries(payload)) {
-      formData.append(key, value);
-    }
-    
-    const res = await fetch(WEB_APP_URL, {
-      method: 'POST',
-      body: formData
-    });
-    
-    console.log('Response status:', res.status);
-    
+    for (const [key, value] of Object.entries(payload)) formData.append(key, value);
+
+    const res = await fetch(WEB_APP_URL, { method: 'POST', body: formData });
     const data = await res.json();
-    console.log('Response data:', data);
-    
+
     if(res.ok && data.status === 'ok'){
       ok.style.display = 'block';
       e.target.reset();
-    }else{
+      ok.scrollIntoView({behavior:'smooth'});
+    } else {
       throw new Error(data.message || `Submit error: ${res.status}`);
     }
-  }catch(ex){
-    console.error('Full error details:', ex);
+  } catch(ex){
     err.style.display = 'block';
     err.textContent = `Error: ${ex.message}`;
-  }finally{
+  } finally {
     submitBtn.disabled = false;
   }
 });
