@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DIY Enabler &mdash; Mentorship Survey</title>
-  <style>
-    :root{--brand:#009C9C;--ink:#333;--bg:#f8f8f8;--card:#fff;}
-    *{box-sizing:border-box}
-    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:24px}
-    header{max-width:960px;margin:0 auto 16px}
-    h1{color:var(--brand);margin:0 0 8px}
-    p.lede{margin:0;color:#555}
-    form{max-width:960px;margin:16px auto;background:var(--card);padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-    fieldset{border:none;margin:0 0 20px;padding:0}
-    legend{font-weight:bold;color:var(--brand);margin:0 0 8px}
-    label{display:block;margin:10px 0 4px}
-    input[type="text"], input[type="email"], select, textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-    .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
-    .option{display:flex;gap:8px;align-items:flex-start}
-    .rating{display:flex;gap:10px;flex-wrap:wrap}
-    .rating .item{display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;border-radius:8px;padding:8px 10px}
-    .hint{font-size:.9em;color:#666}
-    button{background:var(--brand);border:none;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:bold}
-    button:disabled{opacity:.6;cursor:not-allowed}
-    .notice{padding:12px;border-radius:10px;margin-top:10px;display:none}
-    .ok{background:#e7f8f8;color:#0b5}
-    .err{background:#ffecec;color:#b00}
-    footer{max-width:960px;margin:20px auto;color:#666;font-size:.88em}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DIY Enabler &mdash; Mentorship Survey</title>
+<style>
+  :root{--brand:#009C9C;--ink:#333;--bg:#f8f8f8;--card:#fff;}
+  *{box-sizing:border-box}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:24px}
+  header, form, footer{max-width:960px;margin:0 auto}
+  form{margin-top:16px;background:var(--card);padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  fieldset{border:none;margin:0 0 20px;padding:0}
+  legend{font-weight:bold;color:var(--brand);margin:0 0 8px}
+  label{display:block;margin:10px 0 4px}
+  input[type="text"], input[type="email"], select, textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+  .option{display:flex;gap:8px;align-items:flex-start}
+  .rating{display:flex;gap:10px;flex-wrap:wrap}
+  .rating .item{display:flex;align-items:center;gap:6px;border:1px solid #e0e0e0;border-radius:8px;padding:8px 10px}
+  .hint{font-size:.9em;color:#666}
+  button{background:var(--brand);border:none;color:#fff;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:bold}
+  button:disabled{opacity:.6;cursor:not-allowed}
+  .notice{padding:12px;border-radius:10px;margin-top:10px;display:none}
+  .ok{background:#e7f8f8;color:#0b5}
+  .err{background:#ffecec;color:#b00}
+  footer{margin:20px auto;color:#666;font-size:.88em}
+  .hidden{display:none}
+</style>
 </head>
 <body>
   <header>
@@ -42,34 +41,33 @@
     <fieldset>
       <legend>Section 1: Demographic Information</legend>
       <label for="age_group">1. What is your age group?</label>
-      <select id="age_group" name="age_group" required>
+      <select id="age_group" required>
         <option value="">Select</option>
-        <option>Under 25</option>
-        <option>25-34</option>
-        <option>35-44</option>
-        <option>45-54</option>
-        <option>55 and over</option>
+        <option>Under 25</option><option>25-34</option><option>35-44</option>
+        <option>45-54</option><option>55 and over</option>
       </select>
 
       <div class="row">
         <div>
           <label for="living_situation">2. Current living situation</label>
-          <select id="living_situation" name="living_situation" required>
+          <select id="living_situation" required>
             <option value="">Select</option>
             <option>First-time home buyer</option>
             <option>Recently purchased a home (within the last 2 years)</option>
             <option>Other</option>
           </select>
+          <input id="living_situation_other" class="hidden" type="text" placeholder="Please specify (Other)">
         </div>
         <div>
           <label for="home_type">3. Type of home</label>
-          <select id="home_type" name="home_type" required>
+          <select id="home_type" required>
             <option value="">Select</option>
             <option>Single-family home</option>
             <option>Townhouse</option>
             <option>Unit</option>
             <option>Other</option>
           </select>
+          <input id="home_type_other" class="hidden" type="text" placeholder="Please specify (Other)">
         </div>
       </div>
     </fieldset>
@@ -78,23 +76,20 @@
     <fieldset>
       <legend>Section 2: Home Improvement Experience</legend>
       <label for="knowledge_level">4. Knowledge level</label>
-      <select id="knowledge_level" name="knowledge_level" required>
+      <select id="knowledge_level" required>
         <option value="">Select</option>
-        <option>No knowledge</option>
-        <option>Basic knowledge</option>
-        <option>Moderate knowledge</option>
-        <option>Advanced knowledge</option>
+        <option>No knowledge</option><option>Basic knowledge</option>
+        <option>Moderate knowledge</option><option>Advanced knowledge</option>
       </select>
 
       <label for="past_projects">5. Have you undertaken any projects?</label>
-      <select id="past_projects" name="past_projects" required>
+      <select id="past_projects" required>
         <option value="">Select</option>
-        <option>Yes</option>
-        <option>No</option>
+        <option>Yes</option><option>No</option>
       </select>
 
-      <label for="project_description">6. If yes, please describe:</label>
-      <textarea id="project_description" name="project_description" rows="3" placeholder="e.g., painted rooms, tiling, deck repairs"></textarea>
+      <label for="past_projects_description">6. If yes, please describe:</label>
+      <textarea id="past_projects_description" rows="3" placeholder="e.g., painted rooms, tiling, deck repairs"></textarea>
     </fieldset>
 
     <!-- Section 3 -->
@@ -107,33 +102,34 @@
         <label class="option"><input type="checkbox" name="services" value="Project planning assistance"> Project planning assistance</label>
         <label class="option"><input type="checkbox" name="services" value="Startup inspection and advice"> Startup inspection and advice</label>
         <label class="option"><input type="checkbox" name="services" value="Help from a DIY mentor with tools when needed"> Help from a DIY mentor with tools when needed</label>
-        <label class="option"><input type="checkbox" name="services" value="Other"> Other</label>
+        <label class="option"><input id="svc_other_cb" type="checkbox" name="services" value="Other"> Other</label>
       </div>
-
+      <input id="valuable_services_other" class="hidden" type="text" placeholder="Please specify (Other)">
+      
       <label>8. How important are the following? (1 = Not important, 5 = Very important)</label>
       <div class="rating">
         <div class="item">Cost of services:
-          <select name="importance_cost">
+          <select id="importance_cost">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
         <div class="item">Overall project management and assistance:
-          <select name="importance_pm">
+          <select id="importance_management">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
         <div class="item">Flexibility of scheduling:
-          <select name="importance_flex">
+          <select id="importance_flexibility">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
         <div class="item">Resources &amp; advice to assist planning:
-          <select name="importance_resources">
+          <select id="importance_resources">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
         <div class="item">Gaining hands-on experience:
-          <select name="importance_hands_on">
+          <select id="importance_experience">
             <option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option>
           </select>
         </div>
@@ -145,55 +141,41 @@
       <legend>Section 4: Pricing &amp; Payment</legend>
       <div class="row-3">
         <div>
-          <label for="budget_training">9. Budget for on-the-job training</label>
-          <select id="budget_training" name="budget_training">
+          <label for="training_budget">9. Budget for on-the-job training</label>
+          <select id="training_budget">
             <option value="">Select</option>
-            <option>$0 - $50</option>
-            <option>$51 - $100</option>
-            <option>$101 - $200</option>
-            <option>$201 - $500</option>
-            <option>More than $500</option>
+            <option>$0 - $50</option><option>$51 - $100</option>
+            <option>$101 - $200</option><option>$201 - $500</option><option>More than $500</option>
           </select>
         </div>
         <div>
-          <label for="payment_method">10. Preferred payment method</label>
-          <select id="payment_method" name="payment_method">
+          <label for="payment_preference">10. Preferred payment method</label>
+          <select id="payment_preference">
             <option value="">Select</option>
-            <option>Per session</option>
-            <option>Package deal (multiple sessions)</option>
-            <option>Flat fee for entire project</option>
+            <option>Per session</option><option>Package deal (multiple sessions)</option><option>Flat fee for entire project</option>
           </select>
         </div>
         <div>
-          <label for="pay_single_session">11. Single mentoring session (1&ndash;2 hrs)</label>
-          <select id="pay_single_session" name="pay_single_session">
+          <label for="single_session_price">11. Single mentoring session (1&ndash;2 hrs)</label>
+          <select id="single_session_price">
             <option value="">Select</option>
-            <option>$0 - $100</option>
-            <option>$100 - $200</option>
-            <option>$200 - $300</option>
-            <option>More than $300</option>
+            <option>$0 - $100</option><option>$100 - $200</option><option>$200 - $300</option><option>More than $300</option>
           </select>
         </div>
       </div>
       <div class="row">
         <div>
-          <label for="pay_half_day">12. Ongoing mentoring (half day)</label>
-          <select id="pay_half_day" name="pay_half_day">
+          <label for="half_day_price">12. Ongoing mentoring (half day)</label>
+          <select id="half_day_price">
             <option value="">Select</option>
-            <option>$0 - $100</option>
-            <option>$100 - $200</option>
-            <option>$200 - $300</option>
-            <option>More than $300</option>
+            <option>$0 - $100</option><option>$100 - $200</option><option>$200 - $300</option><option>More than $300</option>
           </select>
         </div>
         <div>
-          <label for="pay_full_day">13. Ongoing mentoring (full day)</label>
-          <select id="pay_full_day" name="pay_full_day">
+          <label for="full_day_price">13. Ongoing mentoring (full day)</label>
+          <select id="full_day_price">
             <option value="">Select</option>
-            <option>$0 - $300</option>
-            <option>$300 - $400</option>
-            <option>$400 - $500</option>
-            <option>More than $500</option>
+            <option>$0 - $300</option><option>$300 - $400</option><option>$400 - $500</option><option>More than $500</option>
           </select>
         </div>
       </div>
@@ -202,14 +184,14 @@
     <!-- Section 5 -->
     <fieldset>
       <legend>Section 5: Additional Feedback</legend>
-      <label for="skills_topics">14. Specific skills/topics to learn</label>
-      <textarea id="skills_topics" name="skills_topics" rows="3"></textarea>
+      <label for="skills_interest">14. Specific skills/topics to learn</label>
+      <textarea id="skills_interest" rows="3"></textarea>
 
-      <label for="other_comments">15. Other comments or suggestions</label>
-      <textarea id="other_comments" name="other_comments" rows="3"></textarea>
+      <label for="additional_feedback">15. Other comments or suggestions</label>
+      <textarea id="additional_feedback" rows="3"></textarea>
 
-      <label for="email">Email (optional)</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" />
+      <label for="contact_email">Email (optional)</label>
+      <input type="email" id="contact_email" placeholder="you@example.com" />
       <p class="hint">By submitting, you consent to us storing your responses.</p>
     </fieldset>
 
@@ -218,16 +200,27 @@
     <div id="err" class="notice err">Sorry — there was an issue submitting. Please try again.</div>
   </form>
 
-  <footer>
-    <p>&copy; Ransce @ DIY Enabler</p>
-  </footer>
+  <footer><p>&copy; Ransce @ DIY Enabler</p></footer>
 
 <script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxFF8dR7hhSqcv1bFGBLVhmUElurFQAWfXFsVbfAFNI0Udrg3i2GM-wgVBedeqzpA1Q/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyTaRrGRhOi9LjN1GP962NKWMur-g5iRhaCHB7npkTvv6Xag9kJzsmtTT0x630tKnw/exec";
 
 function getCheckedValues(name){
   return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
 }
+
+// Show/hide "Other" inputs
+const livingSel = document.getElementById('living_situation');
+const livingOther = document.getElementById('living_situation_other');
+livingSel.addEventListener('change', () => livingOther.classList.toggle('hidden', livingSel.value !== 'Other'));
+
+const homeSel = document.getElementById('home_type');
+const homeOther = document.getElementById('home_type_other');
+homeSel.addEventListener('change', () => homeOther.classList.toggle('hidden', homeSel.value !== 'Other'));
+
+const svcOtherCb = document.getElementById('svc_other_cb');
+const svcOtherInput = document.getElementById('valuable_services_other');
+svcOtherCb.addEventListener('change', () => svcOtherInput.classList.toggle('hidden', !svcOtherCb.checked));
 
 document.getElementById('survey-form').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -237,46 +230,53 @@ document.getElementById('survey-form').addEventListener('submit', async (e) => {
   ok.style.display = 'none'; err.style.display = 'none';
   submitBtn.disabled = true;
 
+  // Build payload with EXACT keys matching your sheet header
   const payload = {
+    timestamp: new Date().toISOString(),
     age_group: document.getElementById('age_group').value,
-    living_situation: document.getElementById('living_situation').value,
-    home_type: document.getElementById('home_type').value,
+    living_situation: livingSel.value,
+    living_situation_other: livingOther.classList.contains('hidden') ? '' : livingOther.value,
+    home_type: homeSel.value,
+    home_type_other: homeOther.classList.contains('hidden') ? '' : homeOther.value,
     knowledge_level: document.getElementById('knowledge_level').value,
     past_projects: document.getElementById('past_projects').value,
-    project_description: document.getElementById('project_description').value,
-    services: getCheckedValues('services').join(', '),
-    importance_cost: document.querySelector('[name="importance_cost"]').value,
-    importance_pm: document.querySelector('[name="importance_pm"]').value,
-    importance_flex: document.querySelector('[name="importance_flex"]').value,
-    importance_resources: document.querySelector('[name="importance_resources"]').value,
-    importance_hands_on: document.querySelector('[name="importance_hands_on"]').value,
-    budget_training: document.getElementById('budget_training').value,
-    payment_method: document.getElementById('payment_method').value,
-    pay_single_session: document.getElementById('pay_single_session').value,
-    pay_half_day: document.getElementById('pay_half_day').value,
-    pay_full_day: document.getElementById('pay_full_day').value,
-    skills_topics: document.getElementById('skills_topics').value,
-    other_comments: document.getElementById('other_comments').value,
-    email: document.getElementById('email').value,
-    timestamp: new Date().toISOString()
+    past_projects_description: document.getElementById('past_projects_description').value,
+    valuable_services: getCheckedValues('services').join(', '),
+    valuable_services_other: svcOtherInput.classList.contains('hidden') ? '' : svcOtherInput.value,
+    importance_cost: document.getElementById('importance_cost').value,
+    importance_management: document.getElementById('importance_management').value,
+    importance_flexibility: document.getElementById('importance_flexibility').value,
+    importance_resources: document.getElementById('importance_resources').value,
+    importance_experience: document.getElementById('importance_experience').value,
+    training_budget: document.getElementById('training_budget').value,
+    payment_preference: document.getElementById('payment_preference').value,
+    single_session_price: document.getElementById('single_session_price').value,
+    half_day_price: document.getElementById('half_day_price').value,
+    full_day_price: document.getElementById('full_day_price').value,
+    skills_interest: document.getElementById('skills_interest').value,
+    additional_feedback: document.getElementById('additional_feedback').value,
+    contact_email: document.getElementById('contact_email').value
   };
 
   try{
-    // Convert payload to FormData to avoid CORS preflight
+    // Send as FormData (no preflight)
     const formData = new FormData();
-    for (const [key, value] of Object.entries(payload)) formData.append(key, value);
+    for (const [k,v] of Object.entries(payload)) formData.append(k, v);
 
     const res = await fetch(WEB_APP_URL, { method: 'POST', body: formData });
     const data = await res.json();
 
-    if(res.ok && data.status === 'ok'){
+    if (res.ok && data.status === 'ok') {
       ok.style.display = 'block';
       e.target.reset();
+      livingOther.classList.add('hidden');
+      homeOther.classList.add('hidden');
+      svcOtherInput.classList.add('hidden');
       ok.scrollIntoView({behavior:'smooth'});
     } else {
       throw new Error(data.message || `Submit error: ${res.status}`);
     }
-  } catch(ex){
+  } catch (ex){
     err.style.display = 'block';
     err.textContent = `Error: ${ex.message}`;
   } finally {
